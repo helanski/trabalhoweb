@@ -1,0 +1,65 @@
+/* Estilo para o corpo da página */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f9fa;
+    height: 100%; /* Certifique-se de que o corpo ocupe toda a altura da tela */
+    margin: 0; /* Remove a margem padrão do body */
+    display: flex;
+    flex-direction: column; /* Organiza o conteúdo na vertical */
+  }
+  
+  /* Tabela e célula */
+  table {
+    width: 100%;
+    margin-top: 20px;
+    background-color: #fff;
+  }
+  
+  table th, table td {
+    text-align: center;
+    vertical-align: middle;
+  }
+  
+  table td {
+    font-size: 1rem;
+  }
+  
+
+  /* Estilo para o ícone de ações */
+  .action-btn {
+    cursor: pointer;
+    color: #1f5c30;
+    font-size: 1.0rem;
+  }
+  
+  .action-btn:hover {
+    color: rgb(105, 145, 105);
+  }
+  
+
+/* Garantir que o body e html ocupem 100% da altura da tela */
+html, body {
+    height: 100%; /* Ocupa toda a altura da tela */
+    margin: 0; /* Remove margens padrão */
+    display: flex;
+    flex-direction: column; /* Organiza o conteúdo na vertical */
+  }
+  
+  /* A .container deve ocupar o espaço restante */
+  .container {
+    flex: 1; /* Faz o conteúdo ocupar o espaço restante */
+    padding-bottom: 30px; /* Dá uma margem para o conteúdo não ficar colado no rodapé */
+  }
+  
+  /* O rodapé sempre vai estar no final da página */
+  footer {
+    background-color: #1f5c30;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-top: auto; /* Faz o rodapé ir para o fundo da tela */
+  }
+
+.link-github {
+    color:#f8f9fa
+}
