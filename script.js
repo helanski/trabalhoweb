@@ -70,8 +70,9 @@ document.getElementById('addButton').addEventListener('click', function() {
 
     // Função para concluir (salvar) a tarefa
     tdActions.querySelector('.done-btn').addEventListener('click', function() {
-        tdTask.textContent = tdTask.textContent;  // No caso do "concluir", simplesmente salva o texto
-    });
+    tr.classList.toggle('table-success'); // Muda a cor da linha
+    tdTask.style.textDecoration = tdTask.style.textDecoration === 'line-through' ? 'none' : 'line-through'; // Risca o texto
+});
 
     // Limpa o input de tarefa após adicionar
     document.getElementById('taskInput').value = '';
