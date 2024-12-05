@@ -1,40 +1,55 @@
-document.getElementById('addButton').addEventListener('click', function () {
-    const taskInput = document.getElementById('taskInput').value.trim();
-    const prioritySelect = document.getElementById('prioritySelect').value;
+let taskId = 1; // Inicializa o ID global para as tarefas
 
-    if (taskInput === '') {
-        alert('Por favor, insira uma tarefa.');
-        return;
-    }
+// Importar as funções necessárias
+import { getDatabase, ref, push } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-database.js";  // Importando a base de dados
+import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";  // Importando o app Firebase
 
-    // Criar objeto de tarefa
-    const task = {
-        id: taskId++,  // Incrementa o ID
-        name: taskInput,
-        priority: prioritySelect,
-        done: false  // Começa como não concluída
-    };
+// Configuração do Firebase
+const firebaseConfig = {
+  apiKey: "AIzaSyD2QLXenwC9L1qqS4XiyYBW4ej4b7KvbhA",
+  authDomain: "todolist-caf75.firebaseapp.com",
+  projectId: "todolist-caf75",
+  storageBucket: "todolist-caf75.firebasestorage.app",
+  messagingSenderId: "1084216683407",
+  appId: "1:1084216683407:web:0b8e3478020698ce66b9fa",
+  measurementId: "G-XGXZ33MYX4"
+};
 
-    // Salvar no Firebase
-    firebase.database().ref('tasks/' + task.id).set(task);
+// Inicializar Firebase
+const app = initializeApp(firebaseConfig);
+const database = getDatabase(app);  // Obter referência ao banco de dados
 
-    // Atualizar a lista na interface
-    addTaskToTable(task);
+document.getElementById('addButton').addEventListener('click', function() {
+  const taskInput = document.getElementById('taskInput').value.trim();
+  const prioritySelect = document.getElementById('prioritySelect').value;
 
-    // Limpar input
-    document.getElementById('taskInput').value = '';
-});
+  if (taskInput === '') {
+    alert('Por favor, insira uma tarefa.');
+    return;
+  }
 
-// Carregar tarefas ao iniciar
-firebase.database().ref('tasks').on('value', function (snapshot) {
-    const taskList = document.getElementById('taskList');
-    taskList.innerHTML = ''; // Limpa a tabela
+  // Referência ao banco de dados para adicionar a tarefa
+  const taskData = {
+    id: Date.now(),
+    task: taskInput,
+    priority: prioritySelect,
+    completed: false
+  };
 
-    snapshot.forEach(function (childSnapshot) {
-        const task = childSnapshot.val();
-        addTaskToTable(task); // Adiciona cada tarefa à tabela
+  // Adicionando a tarefa ao banco de dados
+  const taskRef = ref(database, 'tasks');
+  push(taskRef, taskData)
+    .then(() => {
+      console.log('Tarefa salva com sucesso no Firebase!');
+    })
+    .catch((error) => {
+      console.error('Erro ao salvar a tarefa:', error);
     });
+
+  // Limpa o campo de input
+  document.getElementById('taskInput').value = '';
 });
+
 
 function addTaskToTable(task) {
     const tr = document.createElement('tr');
