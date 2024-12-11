@@ -50,6 +50,11 @@ html, body {
     flex: 1; /* Faz o conteúdo ocupar o espaço restante */
     padding-bottom: 30px; /* Dá uma margem para o conteúdo não ficar colado no rodapé */
   }
+
+  .content {
+    margin-left: 250px;
+    padding: 20px;
+    }
   
   /* O rodapé sempre vai estar no final da página */
   footer {
