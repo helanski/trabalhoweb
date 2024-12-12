@@ -7,6 +7,20 @@ body {
     display: flex;
     flex-direction: column; /* Organiza o conteúdo na vertical */
   }
+
+  
+  .form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 50vh; /* Ajusta a altura mínima para centralizar verticalmente */
+    padding: 20px;
+    background-color: #f8f9fa; /* Cor de fundo suave */
+  }
+  
+  h3 {
+    margin-top: 20px;
+  }
   
   /* Tabela e célula */
   table {
